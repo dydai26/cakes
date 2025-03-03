@@ -1,0 +1,98 @@
+.nav-link {
+    position: relative;
+    color: white;
+    text-decoration: none;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: rgb(220, 189, 189);
+    transition: width 0.3s ease;
+    color: black;
+}
+
+.nav-link:hover::after {
+    width: 100%;
+}
+
+.product-card-wrapper {
+    perspective: 1500px;
+    height: 400px;
+}
+
+.product-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+}
+
+.product-card-inner.is-flipped {
+    transform: rotateY(180deg);
+}
+
+.product-card {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    padding: 1rem;
+}
+
+.product-card-front {
+    transform: rotateY(0deg);
+}
+
+.product-card-back {
+    transform: rotateY(180deg);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.modal-content {
+    background: white;
+    border-radius: 20px;
+    max-width: 90%;
+    width: 600px;
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+.video-container {
+    position: relative;
+    padding-bottom: 56.25%;
+    height: 0;
+    overflow: hidden;
+}
+
+.video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+@media (hover: none) {
+    .product-card-wrapper {
+        perspective: none;
+    }
+
+    .product-card-inner {
+        transform-style: flat;
+    }
+
+    .product-card-back {
+        display: none;
+    }
+}
